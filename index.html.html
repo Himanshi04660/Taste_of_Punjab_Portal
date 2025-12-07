@@ -1,0 +1,1751 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Taste of Punjab – Rooftop Restaurant & Antariksh Banquet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -------------------------
+       RESET + GLOBAL
+    -------------------------- */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, #2b1309 0, #050304 52%, #020101 100%);
+      color: #f7f2ea;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    :root {
+      --top-primary: #a53a22;
+      --top-accent: #f2a65a;
+      --top-dark: #1a0c07;
+      --top-bg: #050304;
+      --top-light: #fdf5ea;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", "Georgia", serif;
+      color: var(--top-light);
+    }
+
+    /* -------------------------
+       LAYOUT HELPERS
+    -------------------------- */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .section {
+      padding: 72px 0;
+      background:
+        radial-gradient(circle at top, rgba(242, 166, 90, 0.06) 0, transparent 60%),
+        rgba(5, 3, 4, 0.96);
+    }
+
+    .section.alt {
+      background:
+        radial-gradient(circle at top, rgba(165, 58, 34, 0.22) 0, transparent 55%),
+        #111016;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 40px auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--top-accent);
+    }
+
+    .section-heading h2 {
+      font-size: 2rem;
+      margin-top: 10px;
+    }
+
+    .section-heading p {
+      font-size: 0.96rem;
+      color: #dcc9b0;
+      margin-top: 10px;
+    }
+
+    /* -------------------------
+       BUTTONS / CTAs
+    -------------------------- */
+    .btn-cta {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.78rem 1.9rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--top-primary), #c23f22);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, filter 0.18s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .btn-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.28), transparent 55%);
+      opacity: 0;
+      transform: scale(1.2);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: -1;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.65);
+      filter: brightness(1.02);
+    }
+
+    .btn-cta:hover::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .btn-cta--outline {
+      background: transparent;
+      border: 1px solid var(--top-accent);
+      color: var(--top-accent);
+      box-shadow: none;
+    }
+
+    .btn-cta--outline::before {
+      background: radial-gradient(circle at 0 0, rgba(242, 166, 90, 0.25), transparent 55%);
+    }
+
+    .btn-cta--outline:hover {
+      background: rgba(242, 166, 90, 0.08);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-cta:focus-visible {
+      outline: 2px solid var(--top-accent);
+      outline-offset: 3px;
+    }
+
+    /* Responsive buttons */
+    @media (max-width: 600px) {
+      .hero-cta-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-cta-row .btn-cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* -------------------------
+       HEADER / NAVBAR
+    -------------------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to bottom,
+          rgba(8, 3, 1, 0.96),
+          rgba(8, 3, 1, 0.9),
+          rgba(8, 3, 1, 0.78),
+          transparent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-logo-text span:first-child {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+    }
+
+    .nav-logo-text span:last-child {
+      font-size: 0.7rem;
+      color: #f1dcc2;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-links a {
+      position: relative;
+      opacity: 0.82;
+      padding-bottom: 3px;
+      transition: opacity 0.18s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--top-accent), #ffcf84);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .nav-links-mobile {
+      display: none;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav {
+        padding-inline: 12px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+        color: #fdf5ea;
+      }
+
+      .nav-links-mobile {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 16px 16px;
+        background: #150806;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .nav-links-mobile a {
+        opacity: 0.9;
+      }
+
+      .nav-links-mobile.show {
+        display: flex;
+      }
+
+      .nav-right .btn-cta {
+        display: none;
+      }
+    }
+
+    /* -------------------------
+       HERO CAROUSEL
+    -------------------------- */
+    .hero {
+      margin-top: 70px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      margin: 0 auto;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      height: 70vh;
+      max-height: 760px;
+      overflow: hidden;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-color: #222;
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.02);
+    }
+
+    .carousel-overlay.hero-content {
+      position: absolute;
+      inset: 0;
+      padding: 36px 6vw 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(0, 0, 0, 0.9) 0, rgba(0, 0, 0, 0.65) 40%, transparent 70%),
+        linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 45%);
+    }
+
+    .hero-kicker {
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--top-accent);
+      margin-bottom: 6px;
+    }
+
+    .hero-heading {
+      font-size: clamp(2rem, 3.2vw, 3.1rem);
+      max-width: 540px;
+      line-height: 1.2;
+      text-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      margin-bottom: 12px;
+    }
+
+    .hero-subtext {
+      max-width: 470px;
+      font-size: 0.98rem;
+      color: #f0e1ce;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .hero-meta {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: #e8d7bf;
+      opacity: 0.9;
+    }
+
+    .hero-meta span::before {
+      content: "• ";
+      color: var(--top-accent);
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.96);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      transition: all 0.2s ease;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-button:hover {
+      background: #ffffff;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .nav-button.prev {
+      left: 16px;
+    }
+
+    .nav-button.next {
+      right: 16px;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 6;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .dot.active {
+      background: #fff;
+      transform: scale(1.25);
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.9);
+      width: 0%;
+      transition: width 0.1s linear;
+      z-index: 5;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        margin-top: 74px;
+      }
+
+      .carousel-wrapper {
+        height: 70vh;
+        min-height: 420px;
+        border-radius: 0 0 22px 22px;
+      }
+
+      .carousel-overlay.hero-content {
+        align-items: center;
+        text-align: center;
+        padding: 28px 18px 30px;
+        background:
+          linear-gradient(to top, rgba(0, 0, 0, 0.92), transparent 55%);
+      }
+
+      .hero-heading {
+        font-size: 1.9rem;
+      }
+
+      .hero-subtext {
+        font-size: 0.9rem;
+      }
+
+      .nav-button {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+      }
+    }
+
+    /* -------------------------
+       WHO WE ARE
+    -------------------------- */
+    #who-we-are {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    #home-overview__video {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      min-height: 260px;
+    }
+
+    .fade-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .fade-slide.active {
+      opacity: 1;
+    }
+
+    #home-overview__text .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--top-accent);
+    }
+
+    #home-overview__text .h2-style {
+      font-size: 2rem;
+      margin-top: 8px;
+      margin-bottom: 12px;
+    }
+
+    #home-overview__text p {
+      font-size: 0.95rem;
+      color: #f0dfc7;
+    }
+
+    #home-overview__text__line {
+      width: 40px;
+      height: 3px;
+      background: var(--top-accent);
+      margin-bottom: 12px;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 900px) {
+      #who-we-are {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------
+       SIGNATURE DISHES (CARDS)
+    -------------------------- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(242, 166, 90, 0.18);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transform: translateY(0);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 16px 18px 18px;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--top-accent);
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      margin-bottom: 2px;
+      color: #ffe6c2;
+      font-family: "Playfair Display", serif;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #d8c2a6;
+      margin-top: 6px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.75);
+      border-color: rgba(242, 166, 90, 0.5);
+    }
+
+    @media (max-width: 960px) {
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------
+       FULL MENU SECTION
+    -------------------------- */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .menu-column {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 18px;
+      padding: 18px 20px 20px;
+      border: 1px solid rgba(242, 166, 90, 0.18);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+    }
+
+    .menu-category-title {
+      font-size: 1.02rem;
+      margin-bottom: 10px;
+      color: #ffe1ba;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: "Playfair Display", serif;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item-text {
+      font-size: 0.9rem;
+      color: #f3e3cf;
+    }
+
+    .menu-item-meta {
+      font-size: 0.78rem;
+      color: #ccb9a0;
+      margin-top: 1px;
+    }
+
+    .menu-price {
+      font-size: 0.9rem;
+      color: #ffd18d;
+      white-space: nowrap;
+      margin-left: 6px;
+    }
+
+    @media (max-width: 960px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------
+       AMBIENCE / CELEBRATIONS STRIP
+    -------------------------- */
+    .ambience-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .ambience-strip img {
+      border-radius: 14px;
+      height: 130px;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.05);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+    }
+
+    .ambience-strip img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
+      filter: saturate(1.18) contrast(1.08);
+    }
+
+    @media (max-width: 768px) {
+      .ambience-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* -------------------------
+       VENUES
+    -------------------------- */
+    .venues-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .venue-card {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(242, 166, 90, 0.16);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.65);
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0.04),
+          rgba(10, 5, 3, 0.9));
+      display: flex;
+      flex-direction: column;
+      transform: translateY(0);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .venue-card img {
+      height: 190px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .venue-card-body {
+      padding: 16px 18px 20px;
+    }
+
+    .venue-name {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .venue-location {
+      font-size: 0.86rem;
+      color: #e4d2b8;
+      margin-bottom: 8px;
+    }
+
+    .venue-meta {
+      font-size: 0.82rem;
+      color: #d1bea4;
+    }
+
+    .venue-actions {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .venue-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.78);
+      border-color: rgba(242, 166, 90, 0.55);
+    }
+
+    @media (max-width: 960px) {
+      .venues-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .venues-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------------------------
+       FOOTER
+    -------------------------- */
+    footer {
+      background-color: #080409;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 32px 0 18px;
+      font-size: 0.86rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+    }
+
+    .footer-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .footer-contact ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-contact address {
+      font-style: normal;
+      white-space: pre-line;
+      color: #e6d5bf;
+    }
+
+    .footer-bottom {
+      margin-top: 26px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+      text-align: center;
+      color: #bba895;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 800px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Minor utility */
+    .mt-2 {
+      margin-top: 8px;
+    }
+
+    .mt-3 {
+      margin-top: 12px;
+    }
+
+    .mt-4 {
+      margin-top: 18px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* -------------------------
+       MODERN SCROLL REVEAL
+    -------------------------- */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(32px);
+      filter: blur(4px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        filter 0.7s ease;
+    }
+
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER / NAV -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">
+          <!-- logo (placeholder image – replace with your logo) -->
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=200&q=80"
+            alt="Taste of Punjab logo" />
+          <div class="nav-logo-text">
+            <span>Taste of Punjab</span>
+            <span>Rooftop · Powai · Vashi</span>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#signature-dishes" class="nav-link">Food</a>
+          <a href="#full-menu" class="nav-link">Menu</a>
+          <a href="#ambience-celebrations" class="nav-link">Ambience</a>
+          <a href="#venues" class="nav-link">Venues</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="tel:+917738892828" class="btn-cta" style="font-size:0.78rem;padding:0.55rem 1.2rem;">
+            Call to Reserve
+          </a>
+          <div class="nav-toggle" id="navToggle">☰</div>
+        </div>
+      </nav>
+      <div class="nav-links-mobile" id="navMobile">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#signature-dishes" class="nav-link">Food</a>
+        <a href="#full-menu" class="nav-link">Menu</a>
+        <a href="#ambience-celebrations" class="nav-link">Ambience</a>
+        <a href="#venues" class="nav-link">Venues</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO + MAIN CAROUSEL -->
+  <main>
+    <section class="hero">
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- HERO IMAGES -->
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1603899122634-2f24bed3e8f6?auto=format&fit=crop&w=1600&q=80"
+                alt="Rooftop dinner with city skyline" loading="eager" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1600&q=80"
+                alt="Punjabi thali and curries on table" loading="lazy" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=1600&q=80"
+                alt="Banquet hall decorated for wedding" loading="lazy" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1600&q=80"
+                alt="Close up of Indian food feast" loading="lazy" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1600&q=80"
+                alt="Cocktails on rooftop bar" loading="lazy" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=1600&q=80"
+                alt="Family celebration dinner" loading="lazy" />
+            </div>
+            <div class="slide-item">
+              <img
+                src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=1600&q=80"
+                alt="Restaurant ambience with warm lighting" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Hero overlay content -->
+          <div class="carousel-overlay hero-content">
+            <div class="hero-kicker">Taste of Punjab · Powai</div>
+            <h1 class="hero-heading">
+              Authentic Punjabi flavours, rooftop views & celebrations under the sky.
+            </h1>
+            <p class="hero-subtext">
+              From tandoori classics and hearty curries to cocktails and celebrations, experience Punjab’s warmth
+              with Mumbai’s skyline as your backdrop.
+            </p>
+            <div class="hero-cta-row">
+              <a href="#full-menu" class="btn-cta">View Food Menu</a>
+              <a href="Cuisine/index.html" class="btn-cta btn-cta--outline">Explore Cuisines</a>
+              <a href="tel:+917738892828" class="btn-cta btn-cta--outline">Call to Reserve</a>
+            </div>
+            <div class="hero-meta">
+              <span>Rooftop Restaurant · Powai</span>
+              <span>Antariksh Banquet · 50–250 guests</span>
+              <span>Live Punjabi vibes · Bar & cocktails</span>
+            </div>
+          </div>
+
+          <button class="nav-button prev" id="prevBtn">‹</button>
+          <button class="nav-button next" id="nextBtn">›</button>
+
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="carousel-controls">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
+          <span class="dot" data-slide="4"></span>
+          <span class="dot" data-slide="5"></span>
+          <span class="dot" data-slide="6"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO WE ARE -->
+    <section class="section reveal-up" id="about">
+      <div class="container">
+        <div id="who-we-are">
+          <div id="home-overview__video" class="slideshow-container">
+            <img class="fade-slide active"
+              src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=1200&q=80"
+              alt="Punjabi spread with naan and curries" />
+            <img class="fade-slide"
+              src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80"
+              alt="Cocktails and evening ambience" />
+            <img class="fade-slide"
+              src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=1200&q=80"
+              alt="Dining area with warm lighting" />
+          </div>
+
+          <div id="home-overview__text">
+            <div id="home-overview__text__line"></div>
+            <strong class="label">Who We Are</strong>
+            <h2 class="h2-style">Punjabi Tradition with Modern Hospitality.</h2>
+            <p>
+              Perched atop Powai with stunning skyline views, Taste of Punjab is a rooftop restaurant that offers
+              authentic Punjabi cuisine, vibrant ambience, and a well-stocked bar — the perfect setting for both relaxed
+              meals and festive occasions. Our rooftop banquet, Antariksh, provides an elegant venue for tying the knot or
+              hosting celebrations under the open sky.
+              <br /><br />
+              Rooted in the richness of Punjabi culture, our team is committed to creating seamless and memorable
+              experiences for every guest. From private parties to festive gatherings, we ensure every detail is thoughtfully
+              executed. Our expert chefs serve vibrant, traditional dishes with a contemporary twist, complemented by a
+              welcoming atmosphere and personalised service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE DISHES -->
+    <section class="section alt reveal-up" id="signature-dishes">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">On the Menu</div>
+          <h2>Signature Punjabi Classics You Can't Miss</h2>
+          <p>
+            From slow-cooked gravies and smoky tandoor specials to indulgent desserts, our menu brings the heart of Punjab
+            to your table in every bite.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <!-- fixed Butter Chicken image -->
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1603899122728-3f88f2f1b45c?auto=format&fit=crop&w=1200&q=80"
+              alt="Creamy butter chicken and naan" />
+            <div class="card-body">
+              <div class="card-tag">House Favourite</div>
+              <div class="card-title">Creamy Butter Chicken</div>
+              <p class="card-text">
+                Slow-cooked in a rich tomato–makhan gravy, finished with fresh cream and kasuri methi. Perfect with
+                butter naan and good company.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1200&q=80"
+              alt="Smoky paneer tikka on skewers" />
+            <div class="card-body">
+              <div class="card-tag">Tandoor Special</div>
+              <div class="card-title">Smoky Paneer Tikka</div>
+              <p class="card-text">
+                Char-grilled cottage cheese marinated in yoghurt, spices and mustard oil, giving that irresistible
+                tandoor smokiness.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80"
+              alt="Lassi and Indian desserts on a platter" />
+            <div class="card-body">
+              <div class="card-tag">Sweet Ending</div>
+              <div class="card-title">Lassi & Dessert Platter</div>
+              <p class="card-text">
+                Round off your meal with chilled lassi, phirni and seasonal sweets inspired by traditional Punjabi
+                mithai.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <!-- button now scrolls to full menu section -->
+          <button type="button" id="viewFullMenuBtn" class="btn-cta btn-cta--outline">
+            View Full Menu
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL MENU SECTION -->
+    <section class="section reveal-up" id="full-menu">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Full Menu</div>
+          <h2>Explore the Entire Taste of Punjab Menu</h2>
+          <p>
+            A curated selection of our most loved starters, mains, breads, desserts and beverages. Dishes and availability
+            may vary by location.
+          </p>
+        </div>
+
+        <div class="menu-grid">
+          <!-- Starters -->
+          <div class="menu-column">
+            <div class="menu-category-title">Starters & Tandoor</div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Paneer Tikka (Veg)</div>
+                <div class="menu-item-meta">Char-grilled cottage cheese, capsicum & onions in tandoor marinade.</div>
+              </div>
+              <div class="menu-price">₹379</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Tandoori Chicken</div>
+                <div class="menu-item-meta">Classic Punjabi-style roasted chicken with smoky flavours.</div>
+              </div>
+              <div class="menu-price">₹449</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Amritsari Fish</div>
+                <div class="menu-item-meta">Crispy batter-fried fish with ajwain and chaat masala.</div>
+              </div>
+              <div class="menu-price">₹499</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Veg Seekh Kebab</div>
+                <div class="menu-item-meta">Spiced vegetable mince skewers from the tandoor.</div>
+              </div>
+              <div class="menu-price">₹329</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Chicken Malai Tikka</div>
+                <div class="menu-item-meta">Creamy & mildly spiced, finished with cheese and cream.</div>
+              </div>
+              <div class="menu-price">₹439</div>
+            </div>
+          </div>
+
+          <!-- Mains -->
+          <div class="menu-column">
+            <div class="menu-category-title">Main Course</div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Butter Chicken</div>
+                <div class="menu-item-meta">Iconic Delhi-style murgh makhani in buttery tomato gravy.</div>
+              </div>
+              <div class="menu-price">₹499</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Dal Makhani</div>
+                <div class="menu-item-meta">Slow-cooked black lentils with cream & butter, overnight simmered.</div>
+              </div>
+              <div class="menu-price">₹349</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Kadhai Paneer</div>
+                <div class="menu-item-meta">Paneer tossed with capsicum, onion & roasted spices.</div>
+              </div>
+              <div class="menu-price">₹399</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Chole Bhature</div>
+                <div class="menu-item-meta">Classic Punjabi chole served with fluffy bhature.</div>
+              </div>
+              <div class="menu-price">₹329</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Mutton Rogan Josh</div>
+                <div class="menu-item-meta">Rich, aromatic curry with tender mutton & Kashmiri spices.</div>
+              </div>
+              <div class="menu-price">₹549</div>
+            </div>
+          </div>
+
+          <!-- Breads, desserts, beverages -->
+          <div class="menu-column">
+            <div class="menu-category-title">Breads, Desserts & Beverages</div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Butter Naan / Garlic Naan</div>
+                <div class="menu-item-meta">Soft tandoori naan brushed with butter or garlic.</div>
+              </div>
+              <div class="menu-price">₹89</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Laccha Paratha</div>
+                <div class="menu-item-meta">Flaky, layered whole wheat paratha.</div>
+              </div>
+              <div class="menu-price">₹99</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Phirni</div>
+                <div class="menu-item-meta">Slow-cooked rice pudding flavoured with cardamom & nuts.</div>
+              </div>
+              <div class="menu-price">₹199</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Gulab Jamun (2 pcs)</div>
+                <div class="menu-item-meta">Deep-fried khoya dumplings in warm sugar syrup.</div>
+              </div>
+              <div class="menu-price">₹179</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Sweet / Salted Lassi</div>
+                <div class="menu-item-meta">Traditional churned yoghurt drink, served chilled.</div>
+              </div>
+              <div class="menu-price">₹169</div>
+            </div>
+
+            <div class="menu-item">
+              <div>
+                <div class="menu-item-text">Masala Chaas</div>
+                <div class="menu-item-meta">Spiced buttermilk with roasted cumin & herbs.</div>
+              </div>
+              <div class="menu-price">₹129</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AMBIENCE & CELEBRATIONS -->
+    <section class="section reveal-up" id="ambience-celebrations">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Ambience & Celebrations</div>
+          <h2>Rooftop Evenings, Weddings & Punjabi-Style Parties</h2>
+          <p>
+            Whether it’s a cosy family dinner, a proposal under the stars, or a big fat Punjabi wedding at Antariksh Banquet,
+            Taste of Punjab sets the stage for unforgettable memories.
+          </p>
+        </div>
+
+        <div class="ambience-strip">
+          <img
+            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80"
+            alt="Guests enjoying rooftop dinner with skyline" />
+          <img
+            src="https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?auto=format&fit=crop&w=900&q=80"
+            alt="Wedding decor setup with flowers and lights" />
+          <img
+            src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80"
+            alt="Cocktails and lights at the bar" />
+          <img
+            src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=900&q=80"
+            alt="Family celebrating around a dinner table" />
+        </div>
+
+        <div class="text-center mt-4">
+          <a href="gallery/index.html" class="btn-cta btn-cta--outline">View Photo Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUES SECTION -->
+    <section class="section alt reveal-up" id="venues">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-label">Our Venues</div>
+          <h2>Antariksh Banquet & Taste of Punjab Rooftops</h2>
+          <p>
+            Choose between elegant indoor banquets and open-to-sky rooftops across Powai and Vashi, crafted for weddings,
+            social gatherings and corporate evenings.
+          </p>
+        </div>
+
+        <div class="venues-grid">
+          <div class="venue-card">
+            <img
+              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80"
+              alt="Antariksh Banquet hall with decor" />
+            <div class="venue-card-body">
+              <div class="venue-name">Antariksh Banquet</div>
+              <div class="venue-location">Supreme Business Park, Powai</div>
+              <div class="venue-meta">
+                Elegant indoor banquet with flexible layouts for weddings, receptions and grand celebrations under the
+                stars.
+              </div>
+              <div class="venue-actions">
+                <a href="#contact" class="btn-cta btn-cta--outline">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="venue-card">
+            <img
+              src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1200&q=80"
+              alt="Taste of Punjab Powai rooftop seating" />
+            <div class="venue-card-body">
+              <div class="venue-name">Taste of Punjab – Powai</div>
+              <div class="venue-location">Supreme Business Park, Hiranandani Gardens</div>
+              <div class="venue-meta">
+                Rooftop restaurant with panoramic skyline views, live Punjabi energy, and a full bar for evenings that
+                linger.
+              </div>
+              <div class="venue-actions">
+                <a href="tel:+917738892828" class="btn-cta btn-cta--outline">Call Powai</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="venue-card">
+            <img
+              src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=1200&q=80"
+              alt="Taste of Punjab Vashi cosy interiors" />
+            <div class="venue-card-body">
+              <div class="venue-name">Taste of Punjab – Vashi</div>
+              <div class="venue-location">
+                Satara Plaza, Palm Beach Road, Sector 19D, Navi Mumbai
+              </div>
+              <div class="venue-meta">
+                Vibrant Punjabi dining in Navi Mumbai with hearty food, celebrations and the warmth of true Punjab
+                hospitality.
+              </div>
+              <div class="venue-actions">
+                <a href="#contact" class="btn-cta btn-cta--outline">Venue Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER / CONTACT -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid reveal-up">
+        <div>
+          <div class="footer-title">Contact & Reservations</div>
+          <div class="footer-contact">
+            <ul>
+              <li>
+                Phone:
+                <a href="tel:+91-7738892828">+91-7738892828 / +91-7738892810</a>
+              </li>
+              <li class="mt-2">
+                Email:
+                <a href="mailto:contact@tasteofpunjab.net.in">contact@tasteofpunjab.net.in</a>
+              </li>
+            </ul>
+          </div>
+          <p class="mt-3" style="color:#e6d5bf;">
+            For rooftop reservations, banquets, or special celebrations, share your event details and we’ll
+            help you plan the perfect Punjabi experience.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Locations</div>
+          <div class="footer-contact">
+            <ul>
+              <li>
+                <strong>Powai</strong><br />
+                <address>
+Taste of Punjab
+Supreme Business Park, B-Wing, 12th Floor,
+Hiranandani Gardens, Powai, Mumbai 400076,
+Mumbai, Maharashtra-400076
+                </address>
+              </li>
+              <li class="mt-2">
+                <strong>Vashi</strong><br />
+                <address>
+Taste of Punjab – Vashi
+Satara Plaza, F/178, Plot No. 19/20, 1st,
+Palm Beach Road, Sector 19D,
+Navi Mumbai, Maharashtra-400703
+                </address>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 Taste of Punjab. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMobile = document.getElementById("navMobile");
+
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        navMobile.classList.toggle("show");
+      });
+
+      navMobile.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navMobile.classList.remove("show"));
+      });
+    }
+
+    // Active nav underline on scroll
+    const sections = document.querySelectorAll("main section, footer");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActiveLink() {
+      let currentId = "";
+      const scrollY = window.pageYOffset + 90; // header height offset
+
+      sections.forEach((section) => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentId = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
+      });
+    }
+
+    window.addEventListener("scroll", setActiveLink);
+    setActiveLink();
+
+    // "View Full Menu" button scroll
+    const viewFullMenuBtn = document.getElementById("viewFullMenuBtn");
+    const fullMenuSection = document.getElementById("full-menu");
+    if (viewFullMenuBtn && fullMenuSection) {
+      viewFullMenuBtn.addEventListener("click", () => {
+        fullMenuSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    // Hero Carousel
+    class HeroCarousel {
+      constructor() {
+        this.currentSlide = 0;
+        this.totalSlides = document.querySelectorAll(".slide-item").length;
+        this.autoPlayInterval = null;
+        this.progressInterval = null;
+        this.autoPlayDuration = 5000;
+        this.isTouchDevice = "ontouchstart" in window;
+        this.isTransitioning = false;
+
+        this.track = document.getElementById("carouselTrack");
+        this.dots = document.querySelectorAll(".dot");
+        this.prevBtn = document.getElementById("prevBtn");
+        this.nextBtn = document.getElementById("nextBtn");
+        this.progressBar = document.getElementById("progressBar");
+        this.container = document.querySelector(".carousel-container");
+
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+
+        this.init();
+      }
+
+      init() {
+        if (!this.track) return;
+
+        this.prevBtn.addEventListener("click", () => this.prevSlide());
+        this.nextBtn.addEventListener("click", () => this.nextSlide());
+
+        this.dots.forEach((dot, idx) => {
+          dot.addEventListener("click", () => this.goToSlide(idx));
+        });
+
+        if (this.isTouchDevice) {
+          this.track.addEventListener(
+            "touchstart",
+            (e) => this.handleTouchStart(e),
+            { passive: true }
+          );
+          this.track.addEventListener(
+            "touchend",
+            (e) => this.handleTouchEnd(e),
+            { passive: false }
+          );
+        }
+
+        if (!this.isTouchDevice && this.container) {
+          this.container.addEventListener("mouseenter", () => this.pauseAutoPlay());
+          this.container.addEventListener("mouseleave", () => this.startAutoPlay());
+        }
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            this.pauseAutoPlay();
+          } else {
+            this.startAutoPlay();
+          }
+        });
+
+        this.updateCarousel();
+        this.startAutoPlay();
+      }
+
+      handleTouchStart(e) {
+        this.touchStartX = e.changedTouches[0].screenX;
+        this.pauseAutoPlay();
+      }
+
+      handleTouchEnd(e) {
+        this.touchEndX = e.changedTouches[0].screenX;
+        this.handleSwipe();
+      }
+
+      handleSwipe() {
+        const threshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (diff > threshold) {
+          this.nextSlide();
+        } else if (diff < -threshold) {
+          this.prevSlide();
+        }
+
+        setTimeout(() => this.startAutoPlay(), 2500);
+      }
+
+      goToSlide(idx) {
+        if (this.isTransitioning || idx === this.currentSlide) return;
+        this.isTransitioning = true;
+        this.currentSlide = idx;
+        this.updateCarousel();
+        this.restartAutoPlay();
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 800);
+      }
+
+      nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+        this.goToSlide(nextIndex);
+      }
+
+      prevSlide() {
+        const prevIndex =
+          (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.goToSlide(prevIndex);
+      }
+
+      updateCarousel() {
+        const translateX = -this.currentSlide * 100;
+        this.track.style.transform = `translateX(${translateX}%)`;
+
+        this.dots.forEach((dot, idx) => {
+          dot.classList.toggle("active", idx === this.currentSlide);
+        });
+      }
+
+      startAutoPlay() {
+        this.pauseAutoPlay();
+        if (!this.progressBar) return;
+
+        this.progressBar.style.width = "0%";
+
+        let progress = 0;
+        this.progressInterval = setInterval(() => {
+          progress += 1;
+          this.progressBar.style.width = `${progress}%`;
+        }, this.autoPlayDuration / 100);
+
+        this.autoPlayInterval = setInterval(() => {
+          this.nextSlide();
+        }, this.autoPlayDuration);
+      }
+
+      pauseAutoPlay() {
+        if (this.autoPlayInterval) {
+          clearInterval(this.autoPlayInterval);
+          this.autoPlayInterval = null;
+        }
+        if (this.progressInterval) {
+          clearInterval(this.progressInterval);
+          this.progressInterval = null;
+        }
+      }
+
+      restartAutoPlay() {
+        this.startAutoPlay();
+      }
+    }
+
+    // Fading slideshow for "Who We Are"
+    function initFadeSlideshow() {
+      const slides = document.querySelectorAll(".fade-slide");
+      if (!slides.length) return;
+
+      let index = 0;
+      slides[index].classList.add("active");
+
+      setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+      }, 3000);
+    }
+
+    // Scroll reveal effect
+    function initReveal() {
+      const revealEls = document.querySelectorAll(".reveal-up");
+      if (!("IntersectionObserver" in window) || !revealEls.length) {
+        revealEls.forEach(el => el.classList.add("visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18 }
+      );
+
+      revealEls.forEach((el) => observer.observe(el));
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      new HeroCarousel();
+      initFadeSlideshow();
+      initReveal();
+    });
+  </script>
+</body>
+
+</html>
